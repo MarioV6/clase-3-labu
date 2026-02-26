@@ -1,0 +1,44 @@
+<div class="container">
+  <h2>Avatar</h2>
+    <div class = "canvas-avatar">
+        <div class="cuerpo"
+            [style.background-color]="colorFondo()"
+            [style.width.px]="tamano()"
+            [style.height.px]="tamano()">
+            <div class="ojos">
+                <div class="ojo"></div>
+                <div class="ojo"></div>
+                @if (tieneLentes()){
+                    <div class="lentes"></div>
+                }
+            </div>
+            <div class ="boca">
+                @switch(tipoExpresion()){
+                    @case(1){<div class="feliz"></div>}
+                    @case(2){<div class="sorprendido"></div>}
+                    @case(3){<div class="serio"></div>}
+                    }
+                
+            </div>
+        </div>
+    </div>
+
+<div class="controles">
+    <label color>
+        <input type="color" [value]="colorFondo()" (input)="cambiarColor($event)">
+    </label>
+    <label Tamaño>
+        <input type="range" min="100" max="300" [value]="tamano()" (input)="cambiarTamano($event)">
+    </label>
+    <button (click)="toggleLentes()">
+        {{tieneLentes() ? 'Quitar Lentes' : 'Poner Lentes'}}  (Boolean)    
+    </button>
+    <div class="expresiones">
+        <p> Expresion</p>
+        <button (click)="cambiarExpresion(1)">Feliz</button>   
+        <button (click)="cambiarExpresion(2)">Sorprendido</button>
+        <button (click)="cambiarExpresion(3)">Serio</button> 
+    </div>
+</div>
+
+</div>
